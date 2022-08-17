@@ -18,6 +18,17 @@ Inherits Application
 
 
 	#tag Method, Flags = &h0
+		Sub refreshCursorNow()
+		  if me.t <> nil then
+		    
+		    me.MouseCursor = me.cursors( me.index )
+		    
+		  end if
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub startCursorCount()
 		  if me.t is nil then
 		    
@@ -33,7 +44,7 @@ Inherits Application
 		    
 		    // action "updateCursor" only first called after period has elapsed, so immediately set cursor here
 		    
-		    App.MouseCursor = me.cursors( me.index )
+		    me.refreshCursorNow()
 		    
 		  end if
 		  
@@ -44,7 +55,7 @@ Inherits Application
 		Sub stopCursorCount()
 		  me.t = nil
 		  
-		  App.MouseCursor = nil
+		  me.MouseCursor = nil
 		  
 		  
 		End Sub
@@ -60,7 +71,7 @@ Inherits Application
 		    
 		  end if
 		  
-		  me.MouseCursor = me.cursors( me.index )
+		  me.refreshCursorNow()
 		  
 		  
 		End Sub
@@ -96,14 +107,6 @@ Inherits Application
 
 
 	#tag ViewBehavior
-		#tag ViewProperty
-			Name="cursors()"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class
 #tag EndClass

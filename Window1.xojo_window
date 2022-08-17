@@ -92,6 +92,17 @@ End
 #tag EndWindow
 
 #tag WindowCode
+	#tag Event
+		Sub MouseMove(X As Integer, Y As Integer)
+		  // app cursor reverts to pointer until next timer refresh, so call it manually here immediately
+		  
+		  App.refreshCursorNow()
+		  
+		  
+		End Sub
+	#tag EndEvent
+
+
 #tag EndWindowCode
 
 #tag Events PushButtonStart
